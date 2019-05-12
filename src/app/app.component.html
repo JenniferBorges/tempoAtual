@@ -1,0 +1,26 @@
+<div class="offset-lg-4 col-lg-4">
+  <br>
+  <br>
+  <br>
+  <div class="form-inline">
+    <input type="text" class="form-control  mb-2 mr-sm-2" [(ngModel)]="city" placeholder="Nome da cidade...">
+    <button class="btn btn-primary mb-2" (click)="search(city)">Buscar</button>  
+  </div>
+
+  <br>
+  
+  <ul class="list-group" *ngIf="weather">
+    <li class="list-group-item">{{weather.name}}, {{weather.sys.country}}</li>
+    <li class="list-group-item">{{weather.weather[0].description}}</li>
+    <li class="list-group-item">{{weather.main.temp | celsius}}</li>
+    <li class="list-group-item">Umidade: {{weather.main.humidity}}%</li>
+    <li class="list-group-item">Vento: {{weather.wind.speed | kmH}}</li>
+  </ul>
+
+  <app-spinner *ngIf="isLoading"></app-spinner>
+
+  <div class="alert alert-danger" role="alert" *ngIf="notFound">
+    Cidade não encontrada
+  </div>
+
+</div>
